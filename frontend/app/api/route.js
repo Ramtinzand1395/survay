@@ -4,7 +4,7 @@ export async function POST(req) {
     const data = await req.json();
 
     // ارسال به سرور Express
-    const res = await fetch("http://localhost:5000/api/get-data", {
+    const res = await fetch("https://survay-six.vercel.app/api/get-data", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
