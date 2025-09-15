@@ -13,7 +13,6 @@ export async function POST(req) {
     });
 
     const result = await res.json();
-    console.log(result);
 
     // برگرداندن پاسخ
     return new Response(JSON.stringify({ success: true, result }), {

@@ -22,6 +22,7 @@ const userSchema = new mongoose.Schema({
   activitiesVaried: { type: String, default: null },
   timeManagement: { type: String, default: null },
   staffBehavior: { type: String, default: null },
+  staffBehaviorsuggestions: { type: String, default: null },
   staffAvailability: { type: String, default: null },
   futureParticipation: { type: String, default: null },
   suggestions: { type: String, default: "" },

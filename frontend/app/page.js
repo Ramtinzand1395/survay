@@ -6,7 +6,9 @@ import {
   RatingScale,
   TextAreaInput,
   Modal,
+  ButtonLoading,
 } from "./components";
+
 export default function Home() {
   const [formData, setFormData] = useState({
     overallSatisfaction: null,
@@ -17,7 +19,7 @@ export default function Home() {
     mostAttractiveActivity: "",
     activitiesVaried: null,
     timeManagement: null,
-    staffBehavior: null,
+    staffBehaviorsuggestions: null,
     staffAvailability: null,
     futureParticipation: null,
     suggestions: "",
@@ -29,19 +31,17 @@ export default function Home() {
   });
 
   const [OpenModal, setOpenModal] = useState(true);
-
+  const [loading, setloading] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
 
   const handleInputChange = useCallback((field, value) => {
     setFormData((prev) => ({ ...prev, [field]: value }));
   }, []);
 
-  console.log(formData);
-
   const handleSubmit = async (e) => {
     e.preventDefault();
     console.log("Survey Data Submitted:", formData);
-    window.scrollTo(0, 0);
+    setloading(true);
 
     try {
       const res = await fetch("/api", {
@@ -60,8 +60,11 @@ export default function Home() {
       }
     } catch (err) {
       console.error(err);
+    } finally {
+      setloading(false);
     }
   };
+  console.log(formData)
 
   if (isSubmitted) {
     return (
@@ -106,7 +109,8 @@ export default function Home() {
         <header className="text-center mb-10">
           <h1 className="text-4xl font-bold text-gray-800">فرم نظرسنجی اردو</h1>
           <p className="text-lg text-gray-600 mt-2">
-            لطفاً با پاسخ به سوالات زیر، ما را در ارزیابی این اردو یاری فرمایید.
+            لطفاً با پاسخ به سوالات ssssssssزیر، ما را در ارزیابی این اردو یاری
+            فرمایید.
           </p>
         </header>
 
@@ -277,12 +281,22 @@ export default function Home() {
           </SurveySection>
 
           <div className="flex justify-end pt-8">
-            <button
+            {loading ? (
+              <ButtonLoading />
+            ) : (
+              <button
+                type="submit"
+                className="bg-blue-600 text-white font-bold py-3 px-8 rounded-lg hover:bg-blue-700 focus:outline-none focus:ring-4 focus:ring-blue-300 transition-transform transform hover:scale-105"
+              >
+                ارسال نظرسنجی
+              </button>
+            )}
+            {/* <button
               type="submit"
               className="bg-blue-600 text-white font-bold py-3 px-8 rounded-lg hover:bg-blue-700 focus:outline-none focus:ring-4 focus:ring-blue-300 transition-transform transform hover:scale-105"
             >
               ارسال نظرسنجی
-            </button>
+            </button> */}
           </div>
         </form>
       </div>
