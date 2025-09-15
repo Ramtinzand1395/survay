@@ -6,7 +6,7 @@ import {
   RatingScale,
   TextAreaInput,
   Modal,
-} from "./components";
+} from "../components";
 export default function Home() {
   const [formData, setFormData] = useState({
     overallSatisfaction: null,
