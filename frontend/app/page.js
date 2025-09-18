@@ -64,7 +64,6 @@ export default function Home() {
       setloading(false);
     }
   };
-  console.log(formData)
 
   if (isSubmitted) {
     return (
@@ -109,8 +108,7 @@ export default function Home() {
         <header className="text-center mb-10">
           <h1 className="text-4xl font-bold text-gray-800">فرم نظرسنجی اردو</h1>
           <p className="text-lg text-gray-600 mt-2">
-            لطفاً با پاسخ به سوالات ssssssssزیر، ما را در ارزیابی این اردو یاری
-            فرمایید.
+            لطفاً با پاسخ به سوالات ما را در ارزیابی این اردو یاری فرمایید.
           </p>
         </header>
 
@@ -136,12 +134,12 @@ export default function Home() {
               value={formData.planningAppropriate}
               onChange={(val) => handleInputChange("planningAppropriate", val)}
             />
-            <TextAreaInput
+            {/* <TextAreaInput
               question="بهترین لحظه یا بخش اردو برای شما چه بود؟"
               name="bestMoment"
               value={formData.bestMoment}
               onChange={(val) => handleInputChange("bestMoment", val)}
-            />
+            /> */}
           </SurveySection>
 
           <SurveySection title="بخش ۲: امکانات و خدمات">
@@ -185,14 +183,6 @@ export default function Home() {
           </SurveySection>
 
           <SurveySection title="بخش ۳: برنامه‌ها و فعالیت‌ها">
-            <TextAreaInput
-              question="کدام فعالیت یا برنامه بیشترین جذابیت را برای شما داشت؟"
-              name="mostAttractiveActivity"
-              value={formData.mostAttractiveActivity}
-              onChange={(val) =>
-                handleInputChange("mostAttractiveActivity", val)
-              }
-            />
             <RadioGroup
               question="آیا برنامه‌های فرهنگی/تفریحی کافی و متنوع بودند؟"
               name="activitiesVaried"
@@ -215,6 +205,20 @@ export default function Home() {
               ]}
               value={formData.timeManagement}
               onChange={(val) => handleInputChange("timeManagement", val)}
+            />
+            <TextAreaInput
+              question="کدام فعالیت یا برنامه بیشترین جذابیت را برای شما داشت؟"
+              name="mostAttractiveActivity"
+              value={formData.mostAttractiveActivity}
+              onChange={(val) =>
+                handleInputChange("mostAttractiveActivity", val)
+              }
+            />
+            <TextAreaInput
+              question="به نظر شما جای چه برنامه ای در اردو خالی بود؟"
+              name="bestMoment"
+              value={formData.bestMoment}
+              onChange={(val) => handleInputChange("bestMoment", val)}
             />
           </SurveySection>
 
@@ -266,7 +270,7 @@ export default function Home() {
               onChange={(val) => handleInputChange("futureParticipation", val)}
             />
             <TextAreaInput
-              question="اگر پیشنهادی برای بهبود اردوهای آینده دارید، بنویسید:"
+              question=" در کل اردو را چه گونه دیدید اگر پیشنهادی برای بهبود اردوهای آینده دارید، بنویسید:"
               name="suggestions"
               value={formData.suggestions}
               onChange={(val) => handleInputChange("suggestions", val)}
